@@ -1,14 +1,22 @@
-import { Icons } from '@/components/icons'
-import Image from 'next/legacy/image'
+import Features from '@/components/home-page/features'
+import Footer from '@/components/home-page/footer'
+import HowItWorks from '@/components/home-page/how-it-works'
+import { SectionDivider } from '@/components/home-page/section-divider'
 
 export default function Home() {
   return (
-    <div className="flex h-screen flex-col items-start justify-center bg-black pt-28 text-white">
-      Hi! Thanks for visiting Audily
-      <Icons.github className="h-28 w-28 text-white" />
-      <div className="relative h-28 w-28">
-        <Image alt="logo" src="/assets/logo.svg" layout="fill" />
-      </div>
+    <div className="flex min-h-screen flex-col items-start justify-center bg-black">
+      <SectionDivider />
+      <section>
+        <Features />
+      </section>
+      <section>
+        <HowItWorks />
+      </section>
+      <SectionDivider />
+      <section>
+        <Footer />
+      </section>
     </div>
   )
 }
