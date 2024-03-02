@@ -1,5 +1,6 @@
 import Features from '@/components/home-page/features'
 import Footer from '@/components/home-page/footer'
+import HowItWorks from '@/components/home-page/how-it-works'
 import { SectionDivider } from '@/components/home-page/section-divider'
 
 export default function Home() {
@@ -10,6 +11,9 @@ export default function Home() {
         <Features />
       </section>
       <SectionDivider />
+      <section>
+        <HowItWorks />
+      </section>
       <section>
         <Footer />
       </section>
