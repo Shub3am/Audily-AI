@@ -18,7 +18,7 @@ export default function Footer() {
           audio file.
         </p>
       </div>
-      <ul className="mb-2 mt-8 flex items-center justify-center space-x-4 space-y-0 space-y-5">
+      <ul className="mb-2 mt-8 flex items-center justify-center space-x-4 ">
         {footerNavs.map((item, idx) => (
           <li
             key={idx}
