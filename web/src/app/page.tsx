@@ -10,10 +10,10 @@ export default function Home() {
       <section>
         <Features />
       </section>
-      <SectionDivider />
       <section>
         <HowItWorks />
       </section>
+      <SectionDivider />
       <section>
         <Footer />
       </section>

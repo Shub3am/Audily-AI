@@ -15,8 +15,8 @@ export default function Features() {
                 Why should you use Audily?
               </h1>
               <p className="tracking-tigher px-2 pt-6 text-lg leading-8 text-text-200 lg:px-72">
-                A Developer friendly open source project to summarize your text
-                with optimal time and algorithm.
+                A Developer friendly open source project to summarize your video
+                into audio with optimal time and algorithm.
               </p>
             </div>
             <div className="flex w-full max-w-full items-center justify-center space-y-4">
