@@ -9,8 +9,9 @@ import landingPageGradient from '/public/assets/landing-page-gradient.png'
 export default function HeroSection() {
   const [inputValue, setInputValue] = useState('')
 
-  function isYouTubeUrl (url:string) : boolean {
-    const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=.{11}|embed\/.{11}|v\/.{11}|.{11})|youtu\.be\/.{11})/; //example url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+  function isYouTubeUrl(url: string): boolean {
+    const pattern =
+      /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=.{11}|embed\/.{11}|v\/.{11}|.{11})|youtu\.be\/.{11})/ //example url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
     return pattern.test(url)
   }
@@ -22,22 +23,22 @@ export default function HeroSection() {
   const handleBtnClick = () => {
     if (inputValue == '') {
       toast('Please enter a YouTube url')
-    } else if(isYouTubeUrl(inputValue)) {
+    } else if (isYouTubeUrl(inputValue)) {
       toast('Progress... Please Wait...')
       setInputValue('')
     } else {
-      toast("Please enter a valid YouTube url")
+      toast('Please enter a valid YouTube url')
     }
   }
 
   return (
-    <>
+    <div className="w-full lg:my-20">
       <img
         src={landingPageGradient.src}
         alt=""
-        className="absolute mt-20 h-[330px] w-full"
+        className="absolute -mt-20 h-[330px] w-full"
       />
-      <div className="m-auto text-center backdrop-blur md:w-4/5">
+      <div className="m-auto h-full text-center backdrop-blur md:w-4/5">
         <div className="mx-auto mb-8 flex flex-col gap-3 md:w-3/5">
           <h1 className="text-3xl font-bold text-text-100 md:text-5xl">
             The video knowledge minus the hassle
@@ -70,7 +71,10 @@ export default function HeroSection() {
           >
             Summarize Text
           </button>
-          <button className="hover:bg-text-300 border-2 border-text-100 bg-black px-2 py-2 text-text-100 md:px-4">
+          <button
+            onClick={handleBtnClick}
+            className="hover:bg-text-300 border-2 border-text-100 bg-black px-2 py-2 text-text-100 md:px-4"
+          >
             Summarize Audio
           </button>
         </div>
@@ -87,6 +91,6 @@ export default function HeroSection() {
         pauseOnHover
         theme="dark"
       />
-    </>
+    </div>
   )
 }
