@@ -20,28 +20,27 @@ app.post("/", async (req,res)=> {
     const data = await getAudio(youtube)
     let transcript = ""
     data.forEach(item=> transcript+=item.text+" ")
+
+    try {
     const model = genAI.getGenerativeModel({ model: "gemini-pro"});
     const prompt = `Summarize the following Video Transcript in detail for audiobook, there should be around 1900 characters in the summary, Here's the transcript: ${transcript}`
+ 
     const result = await model.generateContent(prompt); 
     const response = await result.response;
-    const text = response.text();
+    const text = response.text(); 
     console.log(text);
     let output = await tts(text, youtube)
-    res.json(output)
-    
-    
-    
-    // res.json(para)
-    
-
-
-    
+    res.json(output) }
+    catch(e) {
+      console.log(e)
+      res.json("Error Occured, Please Contact Team ETH.Magnus")
+    }
 })
 
 
 
-app.listen(4000, ()=> {
-    console.log("Server Started On Port: 4000")
+app.listen(process.env.PORT || 4000, ()=> {
+    console.log("Server Started!")
 })
 
 

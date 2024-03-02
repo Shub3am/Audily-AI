@@ -1,5 +1,8 @@
-  async function tts(text, link) {
+const { v4: uuidv4 } = require('uuid');
 
+
+  async function tts(text, link) {
+    let outputId = uuidv4();
   const https = require("https");
 const fs = require("fs");
 
@@ -25,13 +28,14 @@ const options = {
 
 // Make the POST request
 const req = https.request(url, options, (res) => {
+
   // Check if the response is successful
   if (res.statusCode !== 200) {
     console.error(`HTTP error! Status: ${res.statusCode}`);
     return;
   }
   // Save the response content to a file
-  const dest = fs.createWriteStream(`./public/${link}.mp3`);
+  const dest = fs.createWriteStream(`./public/${outputId}.mp3`);
   res.pipe(dest);
   dest.on("finish", () => {
     console.log("File saved successfully.");
@@ -46,7 +50,7 @@ req.on("error", (error) => {
 // Send the request with the payload
 req.write(data);
 req.end();
-return `${link}.mp3`
+return `${outputId}.mp3`
 }
 
 module.exports = tts
