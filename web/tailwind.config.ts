@@ -19,14 +19,14 @@ const config: Config = {
     },
     extend: {
       colors: {
-        'primary-100': '#372744',
-        'primary-200': '#BC6FF1',
-        'accent-100': '#D9ACF5',
-        'accent-200': '#fff4ff',
-        'text-100': '#EEEEEE',
-        'text-200': '#FDEBED',
-        'bg-200': '#393E46',
-        'bg-300': '#454e59',
+        'primary-blue': '#1D213E',
+        'primary-pink': '#3F1026',
+        'text-100': '#fff',
+        'text-200': '#BBB8B8',
+        'text-300': '#474444',
+        black: '#000000',
+        'nav-bg': '#0C0A14',
+        'nav-highlighted-text': '#8E488E',
       },
       screens: {
         xs: '200px',
