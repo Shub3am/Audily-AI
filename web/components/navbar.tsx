@@ -12,7 +12,7 @@ export default function Navbar() {
           <Image src={'/assets/logo.svg'} alt="brand logo" layout="fill" />
         </div>
         </div>
-        <div className="border-primary-blue bg-nav-bg rounded-full border md:w-1/3">
+        <div className="border-primary-blue bg-nav-bg rounded-full border md:w-1/3 hidden md:block">
           <ul className="flex list-none items-center justify-center gap-4">
             <li className="hover:border-nav-highlighted-text border-b-2 border-transparent py-3">
               <Link href={'/'} className="hover:text-nav-highlighted-text ">
