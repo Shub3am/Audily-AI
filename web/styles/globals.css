@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Scrollbar /
+/ Webkit-based browsers */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#000, #000);
+}
+
+/* Firefox 64+ */
+
+* {
+  /* scrollbar-width: thin; */
+  scrollbar-color: #3f1026 #000;
+}
+
+/* Firefox 63 and below */
+
+* {
+  /* scrollbar-width: thin; */
+  scrollbar-color: #3f1026 #000;
+}
+
+/* Internet Explorer and Microsoft Edge */
+*::-ms-scrollbar {
+  width: 5px;
+}
+
+*::-ms-scrollbar-track {
+  background: transparent;
+}
+
+*::-ms-scrollbar-thumb {
+  background: linear-gradient(#3f1026, #000);
+}
