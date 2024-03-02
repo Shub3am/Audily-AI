@@ -2,13 +2,16 @@ import { Icons } from '@/components/icons'
 import Image from 'next/legacy/image'
 import { Youtube } from 'lucide-react'
 import landingPageGradient from '/public/assets/landing-page-gradient.png'
+import Navbar from '@/components/navbar'
 
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-screen bg-black pt-28 text-white">
+    <div className="flex flex-col h-screen bg-black text-white">
+      <Navbar />
+
       {/* Hero section */}
-      <img src={landingPageGradient.src} alt="" className='absolute' />
+      <img src={landingPageGradient.src} alt="" className='absolute mt-20 h-[330px] w-full' />
       <div
         className="m-auto md:w-4/5 text-center backdrop-blur"
         
