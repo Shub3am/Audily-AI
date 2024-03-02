@@ -10,6 +10,7 @@ import {
   ChevronLeft,
   Eye,
   EyeOff,
+  PlayCircle,
 } from 'lucide-react'
 
 export const Icons = {
@@ -23,6 +24,7 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   eye: Eye,
   eyeOff: EyeOff,
+  playCircle: PlayCircle,
   GitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
@@ -58,6 +60,107 @@ export const Icons = {
         d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"
         fill="currentColor"
       />
+    </svg>
+  ),
+  github: (props: LucideProps) => (
+    <svg viewBox="0 0 21.854 22.7" {...props}>
+      <path
+        d="M9.922,21.447C4.961,23.062,4.961,18.562,3,17.986m13.844,5.768V19.716c0-1.154.115-1.615-.577-2.307,3.23-.346,6.345-1.615,6.345-6.922a5.307,5.307,0,0,0-1.5-3.692A4.845,4.845,0,0,0,21,3.1s-1.269-.346-4.038,1.5a14.19,14.19,0,0,0-7.153,0C7.038,2.757,5.769,3.1,5.769,3.1A4.845,4.845,0,0,0,5.653,6.8a5.307,5.307,0,0,0-1.5,3.692c0,5.307,3.115,6.576,6.345,6.922a2.4,2.4,0,0,0-.577,2.307v4.038"
+        transform="translate(-1.758 -2.054)"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  ),
+  devfolio: (props: LucideProps) => (
+    <svg viewBox="0 0 20.994 23.039" {...props}>
+      <g transform="translate(-0.544 0)">
+        <path
+          d="M21.955,17.375a10.237,10.237,0,0,1-9.245,10.278s-6.637.17-8.833,0a2.294,2.294,0,0,1-1.841-1.388,2.815,2.815,0,0,0,.977.234c.719.065,1.946.1,3.658.1,2.511,0,5.249-.072,5.272-.072h.048a10.778,10.778,0,0,0,7.113-3.545,11.3,11.3,0,0,0,2.85-6.233Z"
+          transform="translate(-0.418 -4.689)"
+          fill="currentColor" // #bbb8b8
+        />
+        <path
+          d="M20.73,10.433a10.238,10.238,0,0,1-9.26,10.27s-6.637.17-8.833,0A2.471,2.471,0,0,1,.545,18.2V2.561A2.471,2.471,0,0,1,2.685.083c2.2-.186,8.833,0,8.833,0a10.238,10.238,0,0,1,9.213,10.35Z"
+          fill="currentColor"
+        />
+      </g>
+    </svg>
+  ),
+  logo: (props: LucideProps) => (
+    <svg viewBox="0 0 71.795 71.795" {...props}>
+      <rect x="8" y="8" width="48" height="48" rx="24" fill="black" />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M33.132 22.9786C33.4374 23.1111 33.6188 23.4292 33.5776 23.7596L32.8496 29.5832H39.5C39.791 29.5832 40.0558 29.7516 40.1792 30.0151C40.3026 30.2786 40.2625 30.5898 40.0762 30.8134L31.7428 40.8134C31.5297 41.0691 31.1734 41.1538 30.868 41.0212C30.5626 40.8886 30.3812 40.5706 30.4225 40.2402L31.1504 34.4165H24.5C24.209 34.4165 23.9443 34.2482 23.8208 33.9847C23.6974 33.7211 23.7375 33.41 23.9238 33.1864L32.2572 23.1864C32.4703 22.9306 32.8266 22.846 33.132 22.9786ZM26.1013 32.9165H32C32.2151 32.9165 32.4199 33.0089 32.5623 33.1702C32.7046 33.3315 32.7709 33.5461 32.7442 33.7596L32.2282 37.8879L37.8987 31.0832H32C31.7849 31.0832 31.5801 30.9908 31.4378 30.8296C31.2954 30.6683 31.2291 30.4536 31.2558 30.2402L31.7718 26.1119L26.1013 32.9165Z"
+        fill="url(#paint0_linear_926_5875)"
+      />
+      <rect
+        x="8.5"
+        y="8.5"
+        width="47"
+        height="47"
+        rx="23.5"
+        stroke="url(#paint1_radial_926_5875)"
+        stroke-opacity="0.15"
+      />
+      <rect
+        x="8.5"
+        y="8.5"
+        width="47"
+        height="47"
+        rx="23.5"
+        stroke="url(#paint2_linear_926_5875)"
+        stroke-opacity="0.5"
+      />
+      <rect
+        x="0.5"
+        y="0.5"
+        width="63"
+        height="63"
+        rx="31.5"
+        stroke="white"
+        stroke-opacity="0.1"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_926_5875"
+          x1="38.3461"
+          y1="26.8127"
+          x2="28.1714"
+          y2="23.7328"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#FF1E56" />
+          <stop offset="1" stop-color="#9C51A1" />
+        </linearGradient>
+        <radialGradient
+          id="paint1_radial_926_5875"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(32 8) rotate(90) scale(61.7143)"
+        >
+          <stop stop-color="white" />
+          <stop offset="1" stop-color="white" />
+        </radialGradient>
+        <linearGradient
+          id="paint2_linear_926_5875"
+          x1="8"
+          y1="8"
+          x2="18.5"
+          y2="27.5"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="white" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
+        </linearGradient>
+      </defs>
     </svg>
   ),
 }
