@@ -75,9 +75,9 @@ export default function HeroSection() {
   }
 
   return (
-    <>
+    <div className="px-6 pt-10 md:px-0">
       <Image src={landingPageGradient.src} alt="" layout="fill" />
-      <div className="m-auto text-center backdrop-blur md:w-4/5">
+      <div className="m-auto text-center backdrop-blur md:w-[100vw]">
         <div className="mx-auto mb-8 flex flex-col gap-3 md:w-3/5">
           <h1 className="mb-4 text-3xl font-extrabold leading-10 text-text-100 md:text-5xl">
             The video knowledge minus the hassle
@@ -92,11 +92,11 @@ export default function HeroSection() {
             id="youtubeUrl"
             type="text"
             placeholder="Paste a YouTube url here"
-            className="focus:ring-none block w-full rounded-lg border-none bg-gradient-to-r from-primary-blue to-primary-pink px-4 py-7 pl-12 text-center text-white focus:outline-none"
+            className="focus:ring-none block w-full rounded-lg border-none bg-gradient-to-r from-primary-blue to-primary-pink px-4 py-7 pl-0 text-center text-white focus:outline-none md:pl-12"
           />
           <Icons.playCircle className="absolute left-5 h-[20px] w-[20px] text-white" />
         </div>
-        <div className="mx-4 my-8 flex items-center justify-center gap-3 text-sm font-semibold">
+        <div className="mx-4 my-8 flex flex-col items-center justify-center gap-3 text-sm font-semibold sm:flex-row">
           <Button
             onClick={(e) => handleButtonClick('text', e)}
             className="border-2 border-text-100 bg-text-100 px-8 py-6 text-black hover:bg-transparent hover:text-text-100"
@@ -111,6 +111,6 @@ export default function HeroSection() {
           </Button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
