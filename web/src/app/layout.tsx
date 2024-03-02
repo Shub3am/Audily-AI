@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { fontSans } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import React from 'react'
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
   title: 'Audily',
@@ -27,6 +28,7 @@ export default function RootLayout({
         )}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   )
