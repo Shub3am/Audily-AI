@@ -1,7 +1,35 @@
+'use client'
+
+import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { Youtube } from 'lucide-react'
 import landingPageGradient from '/public/assets/landing-page-gradient.png'
 
 export default function HeroSection() {
+  const [inputValue, setInputValue] = useState('')
+
+  function isYouTubeUrl (url:string) : boolean {
+    const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=.{11}|embed\/.{11}|v\/.{11}|.{11})|youtu\.be\/.{11})/; //example url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+    return pattern.test(url)
+  }
+
+  const handleInputChange = (e: any) => {
+    setInputValue(e.target.value)
+  }
+
+  const handleBtnClick = () => {
+    if (inputValue == '') {
+      toast('Please enter a YouTube url')
+    } else if(isYouTubeUrl(inputValue)) {
+      toast('Progress... Please Wait...')
+      setInputValue('')
+    } else {
+      toast("Please enter a valid YouTube url")
+    }
+  }
+
   return (
     <>
       <img
@@ -28,20 +56,37 @@ export default function HeroSection() {
 
           <input
             type="text"
+            onChange={handleInputChange}
+            value={inputValue}
             placeholder="Paste a YouTube url here"
             className="from-primary-blue to-primary-pink focus:ring-none block w-full rounded-lg bg-gradient-to-r px-4  py-2 pl-12 text-center focus:outline-none"
           />
         </label>
 
         <div className="mx-4 mt-5 flex items-center justify-center gap-3 text-sm font-semibold">
-          <button className="hover:bg-text-300 border-2 border-text-100 bg-text-100 md:px-4 px-2 py-2 text-black hover:text-text-100">
+          <button
+            onClick={handleBtnClick}
+            className="hover:bg-text-300 border-2 border-text-100 bg-text-100 px-2 py-2 text-black hover:text-text-100 md:px-4"
+          >
             Summarize Text
           </button>
-          <button className="hover:bg-text-300 border-2 border-text-100 bg-black md:px-4 px-2 py-2 text-text-100">
+          <button className="hover:bg-text-300 border-2 border-text-100 bg-black px-2 py-2 text-text-100 md:px-4">
             Summarize Audio
           </button>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   )
 }
