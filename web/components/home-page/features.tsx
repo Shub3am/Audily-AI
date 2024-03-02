@@ -3,7 +3,10 @@ import { featuresData } from '@/data/features'
 
 export default function Features() {
   return (
-    <div className="flex w-full items-center justify-center bg-black py-12 md:py-20">
+    <div
+      className="flex w-full items-center justify-center bg-black py-12 md:py-20"
+      id="features"
+    >
       <div className="container px-4 md:px-6">
         <div className="">
           <div className="flex flex-col justify-center space-y-8">
