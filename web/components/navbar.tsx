@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function Navbar() {
   return (
     <>
-      <div className="my-8 flex items-center justify-between px-8 ">
+      <div className="my-8 flex items-center justify-between px-8 w-full text-text-100">
         <div className="md:w-1/3">
         <div className="relative h-16 w-16">
           <Image src={'/assets/logo.svg'} alt="brand logo" layout="fill" />
