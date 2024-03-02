@@ -1,25 +1,34 @@
-'use client'
-
 import landingPageGradient from '/public/assets/landing-page-gradient.png'
 import { Icons } from './icons'
 import Image from 'next/image'
 import { Button } from './ui/Button'
 import { Input } from './ui/Input'
 import { useToast } from '@/components/ui/use-toast'
-import { MouseEvent } from 'react'
+import { MouseEvent, useState } from 'react'
+
+const AudioPlayer = ({ audioUrl }: { audioUrl: string }) => {
+  return (
+    <audio controls>
+      <source src={`http://localhost:4000/${audioUrl}`} type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  )
+}
 
 export default function HeroSection() {
   const { toast } = useToast()
+  const [isLoading, setIsLoading] = useState(false)
+  const [audioUrl, setAudioUrl] = useState('')
 
-  const handleButtonClick = (
+  const handleButtonClick = async (
     action: 'text' | 'audio',
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     event: MouseEvent<HTMLButtonElement>
   ) => {
     const url = (
       document.getElementById('youtubeUrl') as HTMLInputElement
     ).value.trim()
 
+    setAudioUrl('')
     // Check if URL is empty
     if (url === '') {
       toast({
@@ -47,30 +56,39 @@ export default function HeroSection() {
       return
     }
 
-    // Display msg based on button type
-    switch (action) {
-      case 'text':
-        toast({
-          title: <div className="text-white">Summarizing Text</div>,
-          description: (
-            <div className="text-background mt-2 w-[340px] rounded-md bg-white p-4">
-              Text summarization process initiated.
-            </div>
-          ),
-        })
-        break
-      case 'audio':
-        toast({
-          title: <div className="text-white">Summarizing Audio</div>,
-          description: (
-            <div className="text-background mt-2 w-[340px] rounded-md bg-white p-4">
-              Audio summarization process initiated.
-            </div>
-          ),
-        })
-        break
-      default:
-        break
+    setIsLoading(true)
+    try {
+      const response = await fetch('http://localhost:4000/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ youtube: url }),
+      })
+      const data = await response.json()
+      console.log({ data })
+
+      setIsLoading(false)
+      toast({
+        title: <div className="text-white">response success</div>,
+      })
+
+      // if (action === 'audio') {
+      setAudioUrl(data) // Assuming the response contains the audio URL
+      console.log({ setAudioUrl })
+
+      // }
+    } catch (error) {
+      setIsLoading(false)
+      console.error('Error:', error)
+      toast({
+        title: <div className="text-white">Error</div>,
+        description: (
+          <div className="text-background mt-2 w-[340px] rounded-md bg-white p-4">
+            An error occurred while processing your request.
+          </div>
+        ),
+      })
     }
   }
 
@@ -87,28 +105,37 @@ export default function HeroSection() {
             efficiency
           </p>
         </div>
-        <div className="relative mx-auto flex items-center gap-2 xs:mb-5 md:mb-0 md:w-2/5">
-          <Input
-            id="youtubeUrl"
-            type="text"
-            placeholder="Paste a YouTube url here"
-            className="focus:ring-none block w-full rounded-lg border-none bg-gradient-to-r from-primary-blue to-primary-pink px-4 py-7 pl-0 text-center text-white focus:outline-none md:pl-12"
-          />
-          <Icons.playCircle className="absolute left-5 h-[20px] w-[20px] text-white" />
-        </div>
-        <div className="mx-4 my-8 flex flex-col items-center justify-center gap-3 text-sm font-semibold sm:flex-row">
-          <Button
-            onClick={(e) => handleButtonClick('text', e)}
-            className="border-2 border-text-100 bg-text-100 px-8 py-6 text-black hover:bg-transparent hover:text-text-100"
-          >
-            Summarize Text
-          </Button>
-          <Button
-            onClick={(e) => handleButtonClick('audio', e)}
-            className="border-2 border-text-100 bg-black px-8 py-6 text-text-100 hover:bg-white hover:text-black "
-          >
-            Summarize Audio
-          </Button>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <div className="relative mx-auto flex items-center gap-2 xs:mb-5 md:mb-0 md:w-2/5">
+              <Input
+                id="youtubeUrl"
+                type="text"
+                placeholder="Paste a YouTube url here"
+                className="focus:ring-none block w-full rounded-lg border-none bg-gradient-to-r from-primary-blue to-primary-pink px-4 py-7 pl-0 text-center text-white focus:outline-none md:pl-12"
+              />
+              <Icons.playCircle className="absolute left-5 h-[20px] w-[20px] text-white" />
+            </div>
+            <div className="mx-4 my-8 flex flex-col items-center justify-center gap-3 text-sm font-semibold sm:flex-row">
+              <Button
+                onClick={(e) => handleButtonClick('text', e)}
+                className="border-2 border-text-100 bg-text-100 px-8 py-6 text-black hover:bg-transparent hover:text-text-100"
+              >
+                Summarize Text
+              </Button>
+              <Button
+                onClick={(e) => handleButtonClick('audio', e)}
+                className="border-2 border-text-100 bg-black px-8 py-6 text-text-100 hover:bg-white hover:text-black "
+              >
+                Summarize Audio
+              </Button>
+            </div>
+          </>
+        )}
+        <div className="flex items-center justify-center">
+          {audioUrl && <AudioPlayer audioUrl={audioUrl} />}
         </div>
       </div>
     </div>
