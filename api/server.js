@@ -7,13 +7,13 @@ const getAudio =  require("./utils/getAudio")
 const tts = require("./utils/textToSpeech")
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-app.use(express.static('public'))
+app.use(express.static(__dirname+'/public'))
 
 app.use(express.json())
 app.use(cors())
 
 app.post("/", async (req,res)=> {
-    const {youtube} = req.body
+    const {youtube, summarizeOnly} = req.body
     if (!youtube) {
         res.status(404).json("Youtube Link Missing")
     }
@@ -28,6 +28,9 @@ app.post("/", async (req,res)=> {
     const result = await model.generateContent(prompt); 
     const response = await result.response;
     const text = response.text(); 
+    if (summarizeOnly) {
+        res.json({summary: text})
+    }
     console.log(text);
     let output = await tts(text, youtube)
     res.json(output) }
