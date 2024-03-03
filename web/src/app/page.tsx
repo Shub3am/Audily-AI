@@ -6,6 +6,7 @@ import Features from '@/components/home-page/features'
 import Footer from '@/components/home-page/footer'
 import HowItWorks from '@/components/home-page/how-it-works'
 import { SectionDivider } from '@/components/home-page/section-divider'
+import Team from '@/components/home-page/team'
 
 export default function Home() {
   return (
@@ -13,11 +14,15 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <SectionDivider />
-      <section className='w-full'>
+      <section className="w-full">
         <Features />
       </section>
-      <section className='w-full'>
+      <section className="w-full">
         <HowItWorks />
+      </section>
+      <SectionDivider />
+      <section className="w-full">
+        <Team />
       </section>
       <SectionDivider />
       <section>
