@@ -36,10 +36,7 @@ export default function Footer() {
         <div className="mr-0 mt-6 sm:mt-0 md:mr-8">
           <ul className="flex items-center space-x-4">
             <li className="flex items-center justify-center rounded-full border p-2">
-              <Icons.X className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" />
-            </li>
-            <li className="flex items-center justify-center rounded-full border p-2">
-              <Icons.GitHub className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" />
+              <a href="https://github.com/Builders-Valley/Audily-AI"><Icons.GitHub className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" /></a>
             </li>
 
             <li className="flex items-center justify-center rounded-full border p-2">
