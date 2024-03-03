@@ -14,7 +14,7 @@ async function uploadFile(fileName, filePath) {
   await storage.bucket(process.env.GCLOUD_STORAGE_BUCKET).upload(filePath, options);
   console.log(`${filePath} uploaded to ${process.env.GCLOUD_STORAGE_BUCKET}`);
   console.log("File Uploaded!")
-  fs.unlinkSync(`/tmp/${outputId}.mp3`)
+  fs.unlinkSync(filePath)
   return fileName;
 }
   async function tts(text, link, callback) {
