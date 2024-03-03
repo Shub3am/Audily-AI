@@ -7,7 +7,7 @@ const navLinks = [
   { title: 'How it works', href: '#how-it-works' },
   { title: 'Features', href: '#features' },
   { title: 'Tech Stack', href: '#tech-stack' },
-  { title: 'Team', href: '/' },
+  { title: 'Team', href: '#team' },
 ]
 
 export default function Navbar() {

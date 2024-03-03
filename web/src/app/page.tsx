@@ -21,6 +21,7 @@ export default function Home() {
       <section className="w-full">
         <HowItWorks />
       </section>
+      <SectionDivider />
       <section className='w-full'>
         <TechStack />
       </section>

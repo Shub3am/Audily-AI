@@ -5,7 +5,7 @@ import { team } from '@/data/team'
 
 export default function Team() {
   return (
-    <section className="py-14">
+    <section className="py-14" id='team'>
       <div className="mx-auto max-w-screen-xl px-4 text-center md:px-8">
         <div className="pb-6 text-center">
           <h1 className="bg-gradient-to-r from-white to-gray-500 bg-clip-text pb-2 text-3xl font-bold tracking-tighter text-transparent sm:text-4xl xl:text-5xl/none">
