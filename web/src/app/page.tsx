@@ -13,10 +13,10 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <SectionDivider />
-      <section>
+      <section className='w-full'>
         <Features />
       </section>
-      <section>
+      <section className='w-full'>
         <HowItWorks />
       </section>
       <SectionDivider />

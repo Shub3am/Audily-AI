@@ -9,7 +9,7 @@ import { MouseEvent, useState } from 'react'
 const AudioPlayer = ({ audioUrl }: { audioUrl: string }) => {
   return (
     <audio controls>
-      <source src={`http://localhost:4000/${audioUrl}`} type="audio/mpeg" />
+      <source src={`http://localhost:4000/${audioUrl}`} />
       Your browser does not support the audio element.
     </audio>
   )
@@ -70,7 +70,7 @@ export default function HeroSection() {
 
       setIsLoading(false)
       toast({
-        title: <div className="text-white">response success</div>,
+        title: <div className="text-white">AudioBook Generated!</div>,
       })
 
       // if (action === 'audio') {
@@ -123,13 +123,13 @@ export default function HeroSection() {
                 onClick={(e) => handleButtonClick('text', e)}
                 className="border-2 border-text-100 bg-text-100 px-8 py-6 text-black hover:bg-transparent hover:text-text-100"
               >
-                Summarize Text
+                Summarize Only
               </Button>
               <Button
                 onClick={(e) => handleButtonClick('audio', e)}
                 className="border-2 border-text-100 bg-black px-8 py-6 text-text-100 hover:bg-white hover:text-black "
               >
-                Summarize Audio
+                Generate AudioBook
               </Button>
             </div>
           </>
