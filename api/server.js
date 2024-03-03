@@ -7,7 +7,6 @@ const getAudio =  require("./utils/getAudio")
 const tts = require("./utils/textToSpeech")
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-app.use(express.static(__dirname+'/public'))
 
 app.use(express.json())
 app.use(cors())
@@ -28,15 +27,19 @@ app.post("/", async (req,res)=> {
     const result = await model.generateContent(prompt); 
     const response = await result.response;
     const text = response.text(); 
+    console.log(text);
     if (summarizeOnly) {
         res.json({summary: text})
     }
-    console.log(text);
-    let output = await tts(text, youtube)
-    res.json(output) }
+    
+    await tts(text, youtube, (data)=>{
+        res.json(data) 
+    })
+    
+}
     catch(e) {
       console.log(e)
-      res.json("Error Occured, Please Contact Team ETH.Magnus")
+      res.json({message: "Error Occured, Please Contact Team ETH.Magnus", error:e})
     }
 })
 

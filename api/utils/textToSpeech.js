@@ -1,22 +1,38 @@
 const { v4: uuidv4 } = require('uuid');
-
-
-  async function tts(text, link) {
-    let outputId = uuidv4();
-  const https = require("https");
+const https = require("https");
 const fs = require("fs");
+const {Storage} = require('@google-cloud/storage');
+const storage = new Storage();
+
+
+async function uploadFile(fileName, filePath) {
+  const options = {
+    destination: fileName,
+
+  };
+
+  await storage.bucket(process.env.GCLOUD_STORAGE_BUCKET).upload(filePath, options);
+  console.log(`${filePath} uploaded to ${process.env.GCLOUD_STORAGE_BUCKET}`);
+  console.log("File Uploaded!")
+  fs.unlinkSync(`/tmp/${outputId}.mp3`)
+  return fileName;
+}
+  async function tts(text, link, callback) {
+
+    let outputId = uuidv4();
+
 
 const url = "https://api.deepgram.com/v1/speak?model=aura-asteria-en";
 
-// Set your Deepgram API key
+
 const apiKey = process.env.DEEPGRAM_API;
 
-// Define the payload
+
 const data = JSON.stringify({
   text: text,
 });
 
-// Define the options for the HTTP request
+
 const options = {
   method: "POST",
   headers: {
@@ -26,31 +42,36 @@ const options = {
 };
 
 
-// Make the POST request
+
 const req = https.request(url, options, (res) => {
 
-  // Check if the response is successful
+
   if (res.statusCode !== 200) {
     console.error(`HTTP error! Status: ${res.statusCode}`);
     return;
   }
-  // Save the response content to a file
-  const dest = fs.createWriteStream(`./public/${outputId}.mp3`);
+
+
+  const dest = fs.createWriteStream(`/tmp/${outputId}.mp3`);
   res.pipe(dest);
-  dest.on("finish", () => {
+  dest.on("finish", async () => {
     console.log("File saved successfully.");
+    let fileInfo = await uploadFile(outputId, `/tmp/${outputId}.mp3`)
+
+    callback(fileInfo)
   });
 });
 
-// Handle potential errors
+
 req.on("error", (error) => {
   console.error("Error:", error);
 });
 
-// Send the request with the payload
+
 req.write(data);
+
 req.end();
-return `${outputId}.mp3`
+
 }
 
 module.exports = tts
