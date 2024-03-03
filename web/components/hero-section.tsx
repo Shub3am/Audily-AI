@@ -49,6 +49,7 @@ export default function HeroSection() {
     // Check if URL is empty
     if (url === '') {
       toast({
+        // eslint-disable-next-line
         title: <div className="text-white">Empty URL</div>,
         description: (
           <div className="text-background mt-2 w-[340px] rounded-md bg-white p-4">
