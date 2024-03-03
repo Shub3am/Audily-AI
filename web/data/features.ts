@@ -25,19 +25,19 @@ export const featuresData: FeatureDataProps[] = [
   },
   {
     src: '/assets/svg/dx.svg',
-    title: 'SEO Optimized.',
+    title: 'Human-Like Voice',
     description:
-      'The SEO and accessibility is top-notch leading to a good experience.',
+      'Audio Experience So Good that makes you feel that Real Human is narrating',
   },
   {
     src: '/assets/svg/options.svg',
     title: 'MultiTask it your way',
-    description: 'Two options give complete flexibility over hassle.',
+    description: 'You can now own your time by multitasking',
   },
   {
     src: '/assets/svg/terminal.svg',
-    title: 'Enhanced UX & DX Experience',
+    title: 'Enhanced Learning Experience',
     description:
-      'The developer experience and user experience is good considering proper documentation and user research.',
+      'A 10 Minute Long Youtube Video can be summarized in a 2-min audiobook, Save Your Time!',
   },
 ]
