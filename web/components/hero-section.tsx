@@ -41,6 +41,8 @@ export default function HeroSection() {
     ).value.trim()
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL
+    const cloudStorage = process.env.NEXT_PUBLIC_CLOUD_URL
+    
     setAudioUrl('')
     setTextResponse('')
     // Check if URL is empty
@@ -73,7 +75,7 @@ export default function HeroSection() {
     setIsLoading(true)
     if (action === 'audio') {
       try {
-        const response = await fetch(`${apiUrl}`, {
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -91,7 +93,7 @@ export default function HeroSection() {
         })
 
         setAudioUrl(
-          `https://storage.googleapis.com/essential-flame-416009.appspot.com/${data}`
+          `${cloudStorage}/${data}`
         ) // Assuming the response contains the audio URL
         console.log({ setAudioUrl })
       } catch (error) {
@@ -108,7 +110,7 @@ export default function HeroSection() {
       }
     } else if (action === 'text') {
       try {
-        const response = await fetch(`${apiUrl}`, {
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
