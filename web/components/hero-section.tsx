@@ -34,6 +34,7 @@ export default function HeroSection() {
 
   const handleButtonClick = async (
     action: 'text' | 'audio',
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     event: MouseEvent<HTMLButtonElement>
   ) => {
     const url = (
