@@ -15,10 +15,22 @@ const AudioPlayer = ({ audioUrl }: { audioUrl: string }) => {
   )
 }
 
+const TextRenderer = ({ textResponse }: { textResponse: string }) => {
+  const [heading, summary] = textResponse.split('**Summary For Audiobook**')
+
+  return (
+    <div className="text-white">
+      {heading && <h2 className="mb-4 text-lg">{heading}</h2>}
+      {summary && <p>{summary}</p>}
+    </div>
+  )
+}
+
 export default function HeroSection() {
   const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false)
   const [audioUrl, setAudioUrl] = useState('')
+  const [textResponse, setTextResponse] = useState('')
 
   const handleButtonClick = async (
     action: 'text' | 'audio',
@@ -29,6 +41,7 @@ export default function HeroSection() {
     ).value.trim()
 
     setAudioUrl('')
+    setTextResponse('')
     // Check if URL is empty
     if (url === '') {
       toast({
@@ -57,38 +70,70 @@ export default function HeroSection() {
     }
 
     setIsLoading(true)
-    try {
-      const response = await fetch('http://localhost:4000/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ youtube: url }),
-      })
-      const data = await response.json()
-      console.log({ data })
+    if (action === 'audio') {
+      try {
+        const response = await fetch('http://localhost:4000/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ youtube: url }),
+        })
+        const data = await response.json()
+        console.log({ data })
 
-      setIsLoading(false)
-      toast({
-        title: <div className="text-white">AudioBook Generated!</div>,
-      })
+        setIsLoading(false)
+        toast({
+          title: (
+            <div className="bg-black text-white">AudioBook Generated!</div>
+          ),
+        })
 
-      // if (action === 'audio') {
-      setAudioUrl(data) // Assuming the response contains the audio URL
-      console.log({ setAudioUrl })
+        setAudioUrl(data) // Assuming the response contains the audio URL
+        console.log({ setAudioUrl })
+      } catch (error) {
+        setIsLoading(false)
+        console.error('Error:', error)
+        toast({
+          title: <div className="text-white">Oops!</div>,
+          description: (
+            <div className="text-background mt-2 w-[340px] rounded-md bg-white p-4">
+              An error occurred while processing your request.
+            </div>
+          ),
+        })
+      }
+    } else if (action === 'text') {
+      try {
+        const response = await fetch('http://localhost:4000/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ youtube: url, summarizeOnly: true }),
+        })
+        const data = await response.json()
+        console.log({ data })
 
-      // }
-    } catch (error) {
-      setIsLoading(false)
-      console.error('Error:', error)
-      toast({
-        title: <div className="text-white">Error</div>,
-        description: (
-          <div className="text-background mt-2 w-[340px] rounded-md bg-white p-4">
-            An error occurred while processing your request.
-          </div>
-        ),
-      })
+        setIsLoading(false)
+        toast({
+          title: <div className="text-white">Text Generated. Woohoo!</div>,
+        })
+
+        setTextResponse(data.summary) // Assuming the response contains the audio URL
+        console.log({ setTextResponse })
+      } catch (error) {
+        setIsLoading(false)
+        console.error('Error:', error)
+        toast({
+          title: <div className="text-white">Oops!</div>,
+          description: (
+            <div className="text-background mt-2 w-[340px] rounded-md bg-white p-4">
+              An error occurred while processing your request.
+            </div>
+          ),
+        })
+      }
     }
   }
 
@@ -106,7 +151,9 @@ export default function HeroSection() {
           </p>
         </div>
         {isLoading ? (
-          <p className='text-white text-lg'>Loading...</p>
+          <div className="flex items-center justify-center">
+            <div className="loader"></div>
+          </div>
         ) : (
           <>
             <div className="relative mx-auto flex items-center gap-2 xs:mb-5 md:mb-0 md:w-2/5">
@@ -137,6 +184,11 @@ export default function HeroSection() {
         <div className="flex items-center justify-center">
           {audioUrl && <AudioPlayer audioUrl={audioUrl} />}
         </div>
+        {textResponse && (
+          <div className="mx-20 flex items-center justify-center border border-2 border-white p-4 leading-8 text-white">
+            <TextRenderer textResponse={textResponse} />
+          </div>
+        )}
       </div>
     </div>
   )
