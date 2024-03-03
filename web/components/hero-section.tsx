@@ -72,7 +72,7 @@ export default function HeroSection() {
     setIsLoading(true)
     if (action === 'audio') {
       try {
-        const response = await fetch('http://localhost:4000/', {
+        const response = await fetch('https://essential-flame-416009.el.r.appspot.com', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export default function HeroSection() {
           ),
         })
 
-        setAudioUrl(data) // Assuming the response contains the audio URL
+        setAudioUrl(`https://storage.googleapis.com/essential-flame-416009.appspot.com/${data}`) // Assuming the response contains the audio URL
         console.log({ setAudioUrl })
       } catch (error) {
         setIsLoading(false)
@@ -105,7 +105,7 @@ export default function HeroSection() {
       }
     } else if (action === 'text') {
       try {
-        const response = await fetch('http://localhost:4000/', {
+        const response = await fetch('https://essential-flame-416009.el.r.appspot.com', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
