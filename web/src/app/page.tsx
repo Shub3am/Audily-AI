@@ -5,6 +5,7 @@ import HeroSection from '@/components/hero-section'
 import Features from '@/components/home-page/features'
 import Footer from '@/components/home-page/footer'
 import HowItWorks from '@/components/home-page/how-it-works'
+import TechStack from '@/components/home-page/tech-stack'
 import { SectionDivider } from '@/components/home-page/section-divider'
 
 export default function Home() {
@@ -18,6 +19,9 @@ export default function Home() {
       </section>
       <section className='w-full'>
         <HowItWorks />
+      </section>
+      <section className='w-full'>
+        <TechStack />
       </section>
       <SectionDivider />
       <section>

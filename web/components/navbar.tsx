@@ -4,15 +4,15 @@ import logo from '@/public/assets/logo.svg'
 import Image from 'next/image'
 
 const navLinks = [
-  { title: 'How it works', href: '/' },
-  { title: 'Features', href: '/' },
-  { title: 'Tech Stack', href: '/' },
+  { title: 'How it works', href: '#how-it-works' },
+  { title: 'Features', href: '#features' },
+  { title: 'Tech Stack', href: '#tech-stack' },
   { title: 'Team', href: '/' },
 ]
 
 export default function Navbar() {
   return (
-    <nav className="flex w-[100vw] items-center justify-between p-4 px-12 py-4 pb-10">
+    <nav className="flex w-[100vw] items-center justify-between p-4 px-12 py-4 pb-10 z-10">
       <div className="flex items-center">
         <div className="relative h-16 w-16">
           <Image src={logo} alt="brand logo" layout="fill" />
