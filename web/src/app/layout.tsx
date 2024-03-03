@@ -23,7 +23,7 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          'flex min-h-screen flex-col overflow-x-hidden font-sans antialiased',
+          'flex min-h-screen flex-col overflow-x-hidden font-sans antialiased capitalize',
           fontSans.variable
         )}
       >

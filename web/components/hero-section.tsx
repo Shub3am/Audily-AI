@@ -106,7 +106,7 @@ export default function HeroSection() {
           </p>
         </div>
         {isLoading ? (
-          <p>Loading...</p>
+          <p className='text-white text-lg'>Loading...</p>
         ) : (
           <>
             <div className="relative mx-auto flex items-center gap-2 xs:mb-5 md:mb-0 md:w-2/5">
