@@ -2,6 +2,12 @@ import Image from 'next/legacy/image'
 import { Icons } from '../icons'
 import Link from 'next/link'
 import { footerNavs } from '@/data/footer'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/Tooltip'
 
 export default function Footer() {
   return (
@@ -10,7 +16,7 @@ export default function Footer() {
         <div className="relative mx-auto h-32 w-32">
           <Image src={'/assets/logo.svg'} alt="brand logo" layout="fill" />
         </div>
-        <span className="from-primary-blue to-primary-pink bg-gradient-to-r bg-clip-text pb-4 text-4xl font-extrabold text-transparent">
+        <span className="bg-gradient-to-r from-primary-blue to-primary-pink bg-clip-text pb-4 text-4xl font-extrabold text-transparent">
           Audily
         </span>
         <p className="mx-0 mt-2 text-[15px] leading-relaxed md:mx-40">
@@ -22,7 +28,7 @@ export default function Footer() {
         {footerNavs.map((item, idx) => (
           <li
             key={idx}
-            className="hover:text-primary-blue transition-all duration-300 hover:underline"
+            className="transition-all duration-300 hover:text-primary-blue hover:underline"
           >
             <Link href={`${item.href}`}>{item.name}</Link>
           </li>
@@ -35,17 +41,53 @@ export default function Footer() {
         </div>
         <div className="mr-0 mt-6 sm:mt-0 md:mr-8">
           <ul className="flex items-center space-x-4">
-            <li className="flex items-center justify-center rounded-full border p-2">
-              <a href="https://github.com/Builders-Valley/Audily-AI"><Icons.GitHub className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" /></a>
-            </li>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <li className="flex items-center justify-center rounded-full border p-2">
+                    <Link
+                      href="https://github.com/Builders-Valley/Audily-AI"
+                      target="_blank"
+                    >
+                      <Icons.GitHub className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" />
+                    </Link>
+                  </li>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>GitHub Repo!</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <li className="flex items-center justify-center rounded-full border p-2">
+                    <Link
+                      href="https://ingenious-hackathon-4-d6bc.devfolio.co/overview"
+                      target="_blank"
+                    >
+                      <Icons.devfolio className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" />
+                    </Link>
+                  </li>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Devfolio hackathon!</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
 
-            <li className="flex items-center justify-center rounded-full border p-2">
-              <Icons.devfolio className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" />
-            </li>
-
-            <li className="flex items-center justify-center rounded-full border p-2">
-              <Icons.Discord className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" />
-            </li>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <li className="flex items-center justify-center rounded-full border p-2">
+                    <Icons.Discord className="h-4 w-4 cursor-pointer text-text-200 transition-all duration-300 hover:text-text-100" />
+                  </li>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Coming soon!</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </ul>
         </div>
       </div>
