@@ -9,7 +9,7 @@ import { MouseEvent, useState } from 'react'
 const AudioPlayer = ({ audioUrl }: { audioUrl: string }) => {
   return (
     <audio controls>
-      <source src={`http://localhost:4000/${audioUrl}`} />
+      <source src={audioUrl} />
       Your browser does not support the audio element.
     </audio>
   )
