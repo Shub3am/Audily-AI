@@ -36,7 +36,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="flex items-center gap-4">
-        <Link href={'/'}>
+        <Link href={'https://github.com/Builders-Valley/Audily-AI'}>
           <Icons.github className="h-6 w-6 text-white" />
         </Link>
         <Link href={'/'}>
