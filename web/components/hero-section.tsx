@@ -60,9 +60,9 @@ export default function HeroSection() {
       return
     }
 
-    const youtubeRegex =
-      /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})$/
-    if (!url.match(youtubeRegex)) {
+    // const youtubeRegex =
+    //   /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})$/
+    if (!url.includes("youtube") && !url.includes("youtu.be")) {
       toast({
         title: <div className="text-white">Invalid URL</div>,
         description: (
