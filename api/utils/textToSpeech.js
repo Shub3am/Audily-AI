@@ -52,11 +52,11 @@ const req = https.request(url, options, (res) => {
   }
 
 
-  const dest = fs.createWriteStream(`/tmp/${outputId}.mp3`);
+  const dest = fs.createWriteStream(`/tmp/${outputId}.m4a`);
   res.pipe(dest);
   dest.on("finish", async () => {
     console.log("File saved successfully.");
-    let fileInfo = await uploadFile(outputId, `/tmp/${outputId}.mp3`)
+    let fileInfo = await uploadFile(outputId, `/tmp/${outputId}.m4a`)
 
     callback(fileInfo)
   });

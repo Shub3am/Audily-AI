@@ -14,6 +14,7 @@ We have created Audily, where you can paste the YouTube URL of any video, and it
 It will be helpful for someone who wants to hear the video in a short span of time on the go. We have utilized Amazon's ML model and are using specialized models to improve accuracy and tone, mimicking human speech.
 
 ## Deployed
+[![Video Demonstrating the Project](https://img.youtube.com/vi/94uvTs6mTg4/0.jpg)](https://www.youtube.com/watch?v=94uvTs6mTg4)
 
 ## :fire: Deployed Link ##
 
